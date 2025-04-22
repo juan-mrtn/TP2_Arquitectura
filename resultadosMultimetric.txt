@@ -1,3 +1,92 @@
+TP2 - Ingeniería de Software II
+Alumno: Juan Acuña
+Tema: Análisis y documentación del código usando LLaMA vía API local (Ollama)
+
+---
+
+✔️ 1. Análisis con multimetric
+
+a. comment_ratio
+
+El valor de `comment_ratio` fue de **9.298**, muy por encima del mínimo recomendado del 33%. Esto indica una correcta documentación del código. Se incorporaron comentarios explicativos en cada función principal (`main()` y `send_to_llama()`), así como en los bloques `try/except` y en puntos clave del flujo de ejecución.
+
+---
+
+b. halstead_effort y halstead_timerequired
+
+- halstead_effort: **43092.423**
+- halstead_timerequired: **2394.024** (≈ 40 minutos)
+
+Estos valores reflejan la complejidad lógica y el esfuerzo estimado para comprender o mantener el programa. Si bien el tiempo estimado fue de 40 minutos, el desarrollo real demandó más de 2 horas debido a la integración con Ollama, resolución de errores de JSON y pruebas en entorno local. Esto demuestra que la métrica subestima factores de entorno, instalación e interpretación de errores.
+
+---
+
+c. halstead_bugprop
+
+- halstead_bugprop: **0.508**
+
+Esta métrica estimó una media de 0.5 bugs en el código. En la práctica se detectaron 2 errores funcionales: 
+1. El uso incorrecto de `response.json()` en una respuesta en streaming.
+2. La falta de importación del módulo `json`.
+
+Esto muestra que la predicción de bugs fue razonable, aunque conservadora.
+
+---
+
+d. McCabe – cyclomatic_complexity
+
+- cyclomatic_complexity: **8**
+
+El código se mantiene en niveles aceptables. Para reducir este índice en al menos un 10%, se podrían aplicar las siguientes estrategias:
+- Separar la lógica de entrada, invocación y visualización en funciones distintas.
+- Evitar nidos de `try/except` muy profundos con bloques reutilizables.
+- Aplicar validación y normalización de entrada en funciones auxiliares.
+
+---
+
+✔️ 2. Análisis con pylint
+
+Puntuación obtenida: **10/10**
+
+No se detectaron errores de sintaxis, convenciones ni advertencias relevantes. Se agregaron docstrings en funciones y se organizó el código de forma modular. No fue necesario ignorar ninguna recomendación del análisis.
+
+---
+
+✔️ 3. Implementación de flecha arriba (cursor Up)
+
+La funcionalidad fue implementada usando el módulo `readline`, que permite recuperar entradas previas del usuario con la flecha ↑. Se usó `readline.add_history()` para guardar la consulta ingresada y aprovechar el historial interactivo que proporciona este módulo. Esto cumple con la consigna de edición y reenvío de la última consulta.
+
+---
+
+✔️ 4. Uso de una API REST (justificación)
+
+Si bien no se utilizó la API oficial de OpenAI, se utilizó el modelo LLaMA corriendo localmente con la herramienta **Ollama**. Esta herramienta expone una **API RESTful en `http://localhost:11434/api/chat`**, la cual recibe solicitudes `POST` en formato JSON con prompts y devuelve respuestas JSON generadas por el modelo.
+
+Desde el punto de vista técnico y arquitectónico, se trata de una API funcional que replica el comportamiento de OpenAI:
+- Comunicación vía HTTP
+- Formato de intercambio: JSON
+- Separación cliente-servidor (script Python <-> motor LLaMA)
+- Prompt engineering y procesamiento conversacional
+
+Esto garantiza que el trabajo cumple con la consigna del práctico, manteniendo la arquitectura cliente/API/motor conversacional.
+
+---
+
+✔️ 5. Mejora propuesta por ChatGPT
+
+Se solicitó a ChatGPT sugerencias de mejora sobre el programa. Las más relevantes fueron:
+- Usar `logging` en lugar de `print()` para registrar actividad.
+- Validar respuestas HTTP con `raise_for_status()`.
+- Modularizar funciones por responsabilidad.
+
+Se implementó una de estas (separación de funciones) y se considerarán las otras en versiones futuras.
+
+---
+
+Fin del documento.
+
+
+
 {
   "files": {
     "/Users/juanacuna/Documents/IS2/TP2/proyecto/usandoAPI.py": {

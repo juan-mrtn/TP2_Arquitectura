@@ -1,3 +1,29 @@
+✔️ 5. Análisis con pylint
+
+Puntuación obtenida: **7.44/10**
+
+Durante el análisis estático con `pylint`, se detectaron varias advertencias, tanto por estilo como por posibles problemas funcionales. A continuación, se detallan las principales correcciones realizadas y las decisiones justificadas:
+
+Correcciones aplicadas:
+- Se agregó un docstring al módulo.
+- Se reorganizó el orden de los imports según el estándar (standard → third-party → local).
+- Se eliminó el espacio en blanco innecesario al final de la línea 46.
+- Se agregó un parámetro `timeout=10` en la llamada a `requests.post`.
+- Se renombró la constante `last_query` a `LAST_QUERY`.
+
+Advertencias que se decidieron **no corregir** (con justificación):
+
+- **Uso de `global`**: Se mantiene el uso de `global` en una variable simple para evitar pasar múltiples parámetros entre funciones. Dada la baja complejidad del script (52 líneas), no genera riesgo de errores ocultos.
+
+- **Captura genérica de `Exception`**: Se optó por mantener la captura general para asegurar la robustez ante cualquier error inesperado en la interacción con la API local, dado que puede fallar por múltiples razones (red, encoding, etc.). En un entorno más crítico, se debería especificar los tipos de excepción.
+
+- **Nombre del archivo y variables**: El nombre `usandoAPI.py` se mantuvo por claridad con la consigna. En una aplicación más grande se seguiría estrictamente el estilo `snake_case`.
+
+---
+
+Con estas correcciones y justificaciones, se considera que el código mantiene una buena calidad general, y las decisiones de estilo fueron hechas de forma razonada para priorizar legibilidad, simplicidad y cumplimiento de la consigna.
+
+
 ************* Module usandoAPI
 usandoAPI.py:46:0: C0303: Trailing whitespace (trailing-whitespace)
 usandoAPI.py:1:0: C0114: Missing module docstring (missing-module-docstring)

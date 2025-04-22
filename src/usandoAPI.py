@@ -58,7 +58,7 @@ def main():
             except Exception as e:
                 print(f"[ERROR en el procesamiento de la consulta]: {e}")
     except KeyboardInterrupt:
-        print("\n👋 Programa finalizado por el usuario.")
+        print("\n Programa finalizado por el usuario.")
 
 if __name__ == "__main__":
     main()
