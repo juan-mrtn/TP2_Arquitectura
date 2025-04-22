@@ -1,0 +1,14 @@
+************* Module usandoAPI
+usandoAPI.py:46:0: C0303: Trailing whitespace (trailing-whitespace)
+usandoAPI.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+usandoAPI.py:1:0: C0103: Module name "usandoAPI" doesn't conform to snake_case naming style (invalid-name)
+usandoAPI.py:5:0: C0103: Constant name "last_query" doesn't conform to UPPER_CASE naming style (invalid-name)
+usandoAPI.py:34:11: W0718: Catching too general exception Exception (broad-exception-caught)
+usandoAPI.py:12:19: W3101: Missing timeout argument for method 'requests.post' can cause your program to hang indefinitely (missing-timeout)
+usandoAPI.py:41:4: W0603: Using the global statement (global-statement)
+usandoAPI.py:58:19: W0718: Catching too general exception Exception (broad-exception-caught)
+usandoAPI.py:2:0: C0411: standard import "readline" should be placed before third party import "requests" (wrong-import-order)
+usandoAPI.py:3:0: C0411: standard import "json" should be placed before third party import "requests" (wrong-import-order)
+
+-----------------------------------
+Your code has been rated at 7.44/10

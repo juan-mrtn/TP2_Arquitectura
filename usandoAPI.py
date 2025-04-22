@@ -30,7 +30,7 @@ def send_to_llama(user_query):
                 if "message" in parsed and "content" in parsed["message"]:
                     full_response += parsed["message"]["content"]
 
-        return full_response or "[⚠️ No se recibió respuesta válida]"
+        return full_response or "[No se recibió respuesta válida]"
     except Exception as e:
         return f"[ERROR al invocar a LLaMA]: {e}"
 
@@ -39,7 +39,7 @@ def main():
     Función principal que ejecuta el ciclo de conversación con el modelo.
     """
     global last_query
-    print("🧠 Escribí tu consulta para LLaMA. Presioná Ctrl+C para salir.")
+    print("Escribí tu consulta para LLaMA. Presioná Ctrl+C para salir.")
     try:
         while True:
             try:
